@@ -1,0 +1,14 @@
+# Core ML and Data Handling
+scikit-learn
+pandas
+numpy
+joblib
+
+# Malware Analysis
+pefile
+
+# Real-time Monitoring
+watchdog
+
+# User Interface
+PyQt6
