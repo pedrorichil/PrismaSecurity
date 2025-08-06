@@ -1,7 +1,6 @@
 import requests
 import json
 
-# Endereço do nosso servidor de análise local
 SCAN_API_URL = "http://127.0.0.1:5000/scan"
 
 def test_scan_file(file_path):
@@ -14,7 +13,7 @@ def test_scan_file(file_path):
 
     try:
         response = requests.post(SCAN_API_URL, headers=headers, data=json.dumps(payload))
-        response.raise_for_status() # Lança um erro para status
+        response.raise_for_status()
         
         print("--- Resposta da API ---")
         print(json.dumps(response.json(), indent=2))
@@ -32,4 +31,4 @@ if __name__ == '__main__':
     #
     # Exemplo de teste:
     # python -m real_time_monitor.ffi_bridge
-    test_scan_file(r"C:\Windows\System32\notepad.exe") # Use 'r' para strings de caminho no Windows
+    test_scan_file(r"C:\Windows\System32\notepad.exe")

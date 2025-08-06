@@ -1,7 +1,7 @@
 // Adicione `notify = "6.1.1"` ao seu Cargo.toml
 use notify::{RecursiveMode, Watcher, Result};
 use std::path::Path;
-use std::process::Command; // Importa o módulo para executar comandos
+use std::process::Command; 
 use std::time::Duration;
 
 fn call_python_scanner(file_path: &str) {
@@ -14,11 +14,10 @@ fn call_python_scanner(file_path: &str) {
         .arg("av_core.scan")
         .arg("--file")
         .arg(file_path)
-        .output(); // .output() espera o comando terminar
+        .output(); 
 
     match output {
         Ok(out) => {
-            // Imprime o que o script Python retornou
             if out.status.success() {
                 println!("[PYTHON SAYS]:\n{}", String::from_utf8_lossy(&out.stdout));
             } else {
@@ -38,7 +37,6 @@ fn main() -> Result<()> {
                if let notify::EventKind::Create(_) = event.kind {
                    for path in event.paths {
                        if let Some(path_str) = path.to_str() {
-                           // Chama a nossa função ponte
                            call_python_scanner(path_str);
                        }
                    }
@@ -48,7 +46,7 @@ fn main() -> Result<()> {
         }
     })?;
 
-    let path_to_watch = "C:\\Users\\SeuUsuario\\Downloads"; // Mude para sua pasta
+    let path_to_watch = "C:\\Users\\SeuUsuario\\Downloads";
     println!("[MONITOR] Monitorando o diretório: {}", path_to_watch);
     watcher.watch(Path::new(path_to_watch), RecursiveMode::Recursive)?;
 
