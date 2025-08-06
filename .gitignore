@@ -4,3 +4,5 @@ av_core/data/malware
 av_core/data/goodware
 __pycache__
 av_core/__pycache__
+enriched_dataset.csv
+av_core/models
